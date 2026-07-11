@@ -115,15 +115,129 @@
           <h2>想让我帮你挑一包？告诉我你平时怎么喝。</h2>
         </div>
         <div class="contact-actions">
-          <a class="button primary" href="mailto:hello@example.com?subject=想请 David 推荐咖啡豆">找 David 选豆</a>
+          <button class="button primary" id="open-quiz" type="button">找 David 选豆</button>
           <a class="button secondary" href="#">小红书</a>
           <a class="button secondary" href="#">公众号</a>
         </div>
       </section>
     </main>
+
+    <dialog class="bean-quiz" id="bean-quiz" aria-labelledby="quiz-title">
+      <button class="quiz-close" type="button" aria-label="关闭选豆问答">×</button>
+      <div class="quiz-shell">
+        <div class="quiz-intro">
+          <p class="quiz-note">David 的选豆桌</p>
+          <h2 id="quiz-title">告诉我你平时怎么喝。</h2>
+          <p>三个小问题，我会从本周的豆子里替你挑一支。</p>
+        </div>
+
+        <div class="quiz-progress" aria-label="答题进度">
+          <span class="quiz-progress-bar"></span>
+          <span class="quiz-progress-text">1 / 3</span>
+        </div>
+
+        <form id="bean-quiz-form">
+          <fieldset class="quiz-step is-active" data-step="0">
+            <legend>你最常怎么喝咖啡？</legend>
+            <div class="quiz-options">
+              <button type="button" data-answer="brew" data-value="pour-over">
+                <strong>手冲</strong><span>喜欢慢慢冲，也在意味道的变化</span>
+              </button>
+              <button type="button" data-answer="brew" data-value="black">
+                <strong>美式或黑咖啡</strong><span>想要干净、顺口，日常喝不累</span>
+              </button>
+              <button type="button" data-answer="brew" data-value="milk">
+                <strong>拿铁或奶咖</strong><span>希望加奶后仍然香甜、有存在感</span>
+              </button>
+            </div>
+          </fieldset>
+
+          <fieldset class="quiz-step" data-step="1">
+            <legend>哪种味道更吸引你？</legend>
+            <div class="quiz-options">
+              <button type="button" data-answer="taste" data-value="floral">
+                <strong>花香与柑橘</strong><span>清亮、轻盈，早晨喝很舒服</span>
+              </button>
+              <button type="button" data-answer="taste" data-value="nutty">
+                <strong>坚果与巧克力</strong><span>温暖、香甜，是熟悉的咖啡味</span>
+              </button>
+              <button type="button" data-answer="taste" data-value="fruity">
+                <strong>莓果与酒香</strong><span>层次鲜明，想尝一点特别的</span>
+              </button>
+            </div>
+          </fieldset>
+
+          <fieldset class="quiz-step" data-step="2">
+            <legend>你和咖啡熟悉到什么程度？</legend>
+            <div class="quiz-options">
+              <button type="button" data-answer="level" data-value="new">
+                <strong>刚开始认真喝</strong><span>希望好冲、稳定，不需要复杂技巧</span>
+              </button>
+              <button type="button" data-answer="level" data-value="daily">
+                <strong>每天都会喝</strong><span>已经知道自己大概喜欢什么</span>
+              </button>
+              <button type="button" data-answer="level" data-value="explore">
+                <strong>喜欢探索风味</strong><span>愿意为一杯有个性的咖啡花点时间</span>
+              </button>
+            </div>
+          </fieldset>
+        </form>
+
+        <section class="quiz-result" aria-live="polite">
+          <p class="quiz-note">我会先递给你这一包</p>
+          <h3 class="result-name"></h3>
+          <p class="result-reason"></p>
+          <p class="result-brew"></p>
+          <div class="quiz-result-actions">
+            <button class="button primary result-link" type="button">看看这支豆</button>
+            <button class="quiz-restart" type="button">重新选一次</button>
+          </div>
+        </section>
+
+        <button class="quiz-back" type="button">上一步</button>
+      </div>
+    </dialog>
+
     <script>
       const header = document.querySelector(".site-header");
       const hero = document.querySelector(".hero");
+      const quiz = document.querySelector("#bean-quiz");
+      const quizForm = document.querySelector("#bean-quiz-form");
+      const quizSteps = [...document.querySelectorAll(".quiz-step")];
+      const quizResult = document.querySelector(".quiz-result");
+      const quizBack = document.querySelector(".quiz-back");
+      const quizAnswers = {};
+      let quizStep = 0;
+
+      const recommendations = {
+        floral: {
+          name: "花香浅烘",
+          card: 0,
+          reason: "你偏爱清亮的香气，这支豆子的柑橘、白花和蜂蜜感会很合拍。它有辨识度，但不会酸得让人紧张。"
+        },
+        nutty: {
+          name: "坚果中烘",
+          card: 1,
+          reason: "你要的是一杯稳定又温暖的咖啡。烤坚果、可可和吐司般的甜香，无论黑咖啡还是加奶都很稳。"
+        },
+        fruity: {
+          name: "果香处理法",
+          card: 2,
+          reason: "你愿意尝一点更鲜明的风味。莓果、酒香和红糖尾韵会慢慢展开，很适合留一点时间细喝。"
+        }
+      };
+
+      const brewTips = {
+        "pour-over": "建议喝法：先用手冲，水温稍低一点，让甜感和香气慢慢出来。",
+        black: "建议喝法：做成美式或黑咖啡，比例清爽一些，日常喝会很舒服。",
+        milk: "建议喝法：做拿铁时少放一点奶，能保留咖啡本身的甜香。"
+      };
+
+      const levelTips = {
+        new: "这支对冲煮也比较宽容，作为认真喝咖啡的起点很合适。",
+        daily: "它有足够的稳定感，也不会因为天天喝而显得单调。",
+        explore: "可以试着调整研磨和水温，你会喝到更细微的变化。"
+      };
 
       function updateHeaderTone() {
         const hasLeftHero = window.scrollY >= hero.offsetHeight - header.offsetHeight;
@@ -133,6 +247,61 @@
       window.addEventListener("scroll", updateHeaderTone, { passive: true });
       window.addEventListener("resize", updateHeaderTone);
       updateHeaderTone();
+
+      function showQuizStep(nextStep) {
+        quizStep = nextStep;
+        quizSteps.forEach((step, index) => step.classList.toggle("is-active", index === quizStep));
+        quizForm.hidden = false;
+        quizResult.classList.remove("is-active");
+        quizBack.hidden = quizStep === 0;
+        document.querySelector(".quiz-progress-bar").style.width = `${((quizStep + 1) / 3) * 100}%`;
+        document.querySelector(".quiz-progress-text").textContent = `${quizStep + 1} / 3`;
+      }
+
+      function openQuiz() {
+        Object.keys(quizAnswers).forEach((key) => delete quizAnswers[key]);
+        showQuizStep(0);
+        if (!quiz.open) quiz.showModal();
+      }
+
+      function showRecommendation() {
+        const pick = recommendations[quizAnswers.taste];
+        quizForm.hidden = true;
+        quizBack.hidden = true;
+        document.querySelector(".quiz-progress-bar").style.width = "100%";
+        document.querySelector(".quiz-progress-text").textContent = "选好了";
+        document.querySelector(".result-name").textContent = pick.name;
+        document.querySelector(".result-reason").textContent = `${pick.reason}${levelTips[quizAnswers.level]}`;
+        document.querySelector(".result-brew").textContent = brewTips[quizAnswers.brew];
+        quizResult.dataset.card = pick.card;
+        quizResult.classList.add("is-active");
+      }
+
+      document.querySelector("#open-quiz").addEventListener("click", openQuiz);
+      document.querySelector(".quiz-close").addEventListener("click", () => quiz.close());
+      document.querySelector(".quiz-restart").addEventListener("click", openQuiz);
+      quizBack.addEventListener("click", () => showQuizStep(Math.max(0, quizStep - 1)));
+
+      quizForm.addEventListener("click", (event) => {
+        const option = event.target.closest("[data-answer]");
+        if (!option) return;
+        quizAnswers[option.dataset.answer] = option.dataset.value;
+        if (quizStep < quizSteps.length - 1) showQuizStep(quizStep + 1);
+        else showRecommendation();
+      });
+
+      document.querySelector(".result-link").addEventListener("click", () => {
+        const cards = document.querySelectorAll(".project-card");
+        const selectedCard = cards[Number(quizResult.dataset.card)];
+        quiz.close();
+        selectedCard.scrollIntoView({ behavior: "smooth", block: "center" });
+        selectedCard.classList.add("is-recommended");
+        window.setTimeout(() => selectedCard.classList.remove("is-recommended"), 1800);
+      });
+
+      quiz.addEventListener("click", (event) => {
+        if (event.target === quiz) quiz.close();
+      });
     </script>
   </body>
 </html>
