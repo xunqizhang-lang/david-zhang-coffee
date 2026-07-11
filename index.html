@@ -51,34 +51,12 @@
 
       <section class="section" id="buy" aria-label="本周推荐咖啡豆">
         <div class="section-heading">
-          <h2>本周推荐</h2>
+          <div>
+            <h2>本周推荐</h2>
+            <p class="week-label" id="week-label"></p>
+          </div>
         </div>
-        <div class="project-grid">
-          <article class="project-card">
-            <p class="project-type">适合早晨</p>
-            <h3>花香浅烘</h3>
-            <p>
-              明亮但不尖，入口有柑橘、白花和一点蜂蜜感。适合醒来后第一杯，也适合想试试精品咖啡的新朋友。
-            </p>
-            <a href="mailto:hello@example.com?subject=想了解花香浅烘">想买这支</a>
-          </article>
-          <article class="project-card">
-            <p class="project-type">适合日常</p>
-            <h3>坚果中烘</h3>
-            <p>
-              甜感稳定，像烤坚果、可可和温热吐司。美式、拿铁、手冲都稳，是那种家里不能断的口粮豆。
-            </p>
-            <a href="mailto:hello@example.com?subject=想了解坚果中烘">想买这支</a>
-          </article>
-          <article class="project-card">
-            <p class="project-type">适合慢喝</p>
-            <h3>果香处理法</h3>
-            <p>
-              风味更有层次，莓果、酒香和红糖尾韵会慢慢展开。适合周末，也适合送给喜欢探索风味的朋友。
-            </p>
-            <a href="mailto:hello@example.com?subject=想了解果香处理法">想买这支</a>
-          </article>
-        </div>
+        <div class="project-grid" id="weekly-beans"></div>
       </section>
 
       <section class="section timeline-section" id="notes" aria-label="David 的选择标准">
@@ -186,10 +164,11 @@
         <section class="quiz-result" aria-live="polite">
           <p class="quiz-note">我会先递给你这一包</p>
           <h3 class="result-name"></h3>
+          <p class="result-meta"></p>
           <p class="result-reason"></p>
           <p class="result-brew"></p>
           <div class="quiz-result-actions">
-            <button class="button primary result-link" type="button">看看这支豆</button>
+            <button class="button primary result-link" type="button">回到本周豆单</button>
             <button class="quiz-restart" type="button">重新选一次</button>
           </div>
         </section>
@@ -209,23 +188,92 @@
       const quizAnswers = {};
       let quizStep = 0;
 
-      const recommendations = {
-        floral: {
-          name: "花香浅烘",
-          card: 0,
-          reason: "你偏爱清亮的香气，这支豆子的柑橘、白花和蜂蜜感会很合拍。它有辨识度，但不会酸得让人紧张。"
+      const beanCatalog = [
+        {
+          id: "yirgacheffe",
+          name: "埃塞俄比亚 · 耶加雪菲",
+          type: "花香明亮",
+          roast: "浅烘 · 水洗",
+          flavors: "茉莉、柠檬、白桃",
+          description: "茶感干净，花香很轻盈，凉下来会有白桃般的甜。适合清晨，也适合第一次认真感受花香型咖啡。",
+          tastes: ["floral"], brews: ["pour-over", "black"], levels: ["new", "daily"]
         },
-        nutty: {
-          name: "坚果中烘",
-          card: 1,
-          reason: "你要的是一杯稳定又温暖的咖啡。烤坚果、可可和吐司般的甜香，无论黑咖啡还是加奶都很稳。"
+        {
+          id: "kenya",
+          name: "肯尼亚 · 麒麟雅加",
+          type: "果汁感",
+          roast: "浅烘 · 水洗",
+          flavors: "黑加仑、葡萄柚、红糖",
+          description: "酸甜饱满，像一杯有黑加仑香气的果汁。风味轮廓清楚，适合喜欢明亮口感的人。",
+          tastes: ["fruity"], brews: ["pour-over", "black"], levels: ["daily", "explore"]
         },
-        fruity: {
-          name: "果香处理法",
-          card: 2,
-          reason: "你愿意尝一点更鲜明的风味。莓果、酒香和红糖尾韵会慢慢展开，很适合留一点时间细喝。"
+        {
+          id: "huila",
+          name: "哥伦比亚 · 慧兰",
+          type: "均衡耐喝",
+          roast: "中浅烘 · 水洗",
+          flavors: "橙子、焦糖、可可",
+          description: "酸甜平衡，既有柑橘的清爽，也有焦糖和可可的安稳感，是很容易喜欢上的日常单品。",
+          tastes: ["floral", "nutty"], brews: ["pour-over", "black", "milk"], levels: ["new", "daily"]
+        },
+        {
+          id: "cerrado",
+          name: "巴西 · 喜拉多",
+          type: "奶咖友好",
+          roast: "中烘 · 日晒",
+          flavors: "榛果、巧克力、奶油",
+          description: "酸度低，甜感扎实，加奶后仍能尝到榛果和巧克力，是拿铁和日常美式都很稳的选择。",
+          tastes: ["nutty"], brews: ["milk", "black"], levels: ["new", "daily"]
+        },
+        {
+          id: "antigua",
+          name: "危地马拉 · 安提瓜",
+          type: "甜香醇厚",
+          roast: "中烘 · 水洗",
+          flavors: "黑巧、苹果、香料",
+          description: "有黑巧克力的厚度，也留着一点苹果酸甜和香料感。喜欢传统咖啡香、又想多一点层次的人会很合适。",
+          tastes: ["nutty"], brews: ["black", "milk"], levels: ["daily", "explore"]
+        },
+        {
+          id: "mandheling",
+          name: "印尼 · 曼特宁",
+          type: "低酸厚实",
+          roast: "中深烘 · 湿刨法",
+          flavors: "黑巧、雪松、香料",
+          description: "口感厚、酸度低，带黑巧克力、木质和香料气息。适合不喜欢明亮酸感、偏爱沉稳咖啡的人。",
+          tastes: ["nutty"], brews: ["black", "milk"], levels: ["new", "daily"]
+        },
+        {
+          id: "geisha",
+          name: "巴拿马 · 瑰夏",
+          type: "细腻花香",
+          roast: "浅烘 · 水洗",
+          flavors: "佛手柑、茉莉、蜂蜜",
+          description: "香气细致、层次舒展，像佛手柑茶与蜂蜜。适合愿意慢慢喝、探索细微变化的风味爱好者。",
+          tastes: ["floral"], brews: ["pour-over"], levels: ["explore"]
+        },
+        {
+          id: "tarrazu",
+          name: "哥斯达黎加 · 塔拉珠",
+          type: "清甜圆润",
+          roast: "中浅烘 · 蜜处理",
+          flavors: "红苹果、蜂蜜、杏仁",
+          description: "红苹果般的清甜和蜂蜜质感很讨喜，尾韵带一点杏仁香，既有风味又不过分张扬。",
+          tastes: ["floral", "nutty"], brews: ["pour-over", "black"], levels: ["new", "daily"]
+        },
+        {
+          id: "rwanda",
+          name: "卢旺达 · 尼亚马谢凯",
+          type: "莓果甜感",
+          roast: "浅烘 · 日晒",
+          flavors: "红莓、橙花、红糖",
+          description: "红莓与橙花香气活泼，红糖般的甜感把酸质托得很舒服，适合想尝果香但不想太刺激的人。",
+          tastes: ["fruity", "floral"], brews: ["pour-over", "black"], levels: ["daily", "explore"]
         }
-      };
+      ];
+
+      let weeklyBeans = [];
+      let selectedBean = null;
 
       const brewTips = {
         "pour-over": "建议喝法：先用手冲，水温稍低一点，让甜感和香气慢慢出来。",
@@ -238,6 +286,53 @@
         daily: "它有足够的稳定感，也不会因为天天喝而显得单调。",
         explore: "可以试着调整研磨和水温，你会喝到更细微的变化。"
       };
+
+      function getIsoWeek(date) {
+        const utcDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+        const day = utcDate.getUTCDay() || 7;
+        utcDate.setUTCDate(utcDate.getUTCDate() + 4 - day);
+        const yearStart = new Date(Date.UTC(utcDate.getUTCFullYear(), 0, 1));
+        return Math.ceil((((utcDate - yearStart) / 86400000) + 1) / 7);
+      }
+
+      function formatWeekRange(date) {
+        const start = new Date(date);
+        const day = start.getDay() || 7;
+        start.setDate(start.getDate() - day + 1);
+        const end = new Date(start);
+        end.setDate(start.getDate() + 6);
+        const format = (value) => `${value.getMonth() + 1}月${value.getDate()}日`;
+        return `${format(start)} - ${format(end)} · 每周一更新`;
+      }
+
+      function renderWeeklyBeans() {
+        const now = new Date();
+        const offset = ((now.getFullYear() * 53 + getIsoWeek(now)) * 3) % beanCatalog.length;
+        weeklyBeans = [0, 1, 2].map((index) => beanCatalog[(offset + index) % beanCatalog.length]);
+        document.querySelector("#week-label").textContent = formatWeekRange(now);
+        document.querySelector("#weekly-beans").innerHTML = weeklyBeans.map((bean) => `
+          <article class="project-card" data-bean-id="${bean.id}">
+            <p class="project-type">${bean.type}</p>
+            <h3>${bean.name}</h3>
+            <p class="bean-meta">${bean.roast} · ${bean.flavors}</p>
+            <p>${bean.description}</p>
+            <a href="mailto:hello@example.com?subject=${encodeURIComponent(`想了解${bean.name}`)}">想买这支</a>
+          </article>
+        `).join("");
+      }
+
+      function pickBean() {
+        const scored = beanCatalog.map((bean) => ({
+          bean,
+          score:
+            (bean.tastes.includes(quizAnswers.taste) ? 5 : 0) +
+            (bean.brews.includes(quizAnswers.brew) ? 3 : 0) +
+            (bean.levels.includes(quizAnswers.level) ? 2 : 0)
+        })).sort((a, b) => b.score - a.score);
+        const bestScore = scored[0].score;
+        const matches = scored.filter((item) => item.score === bestScore);
+        return matches[getIsoWeek(new Date()) % matches.length].bean;
+      }
 
       function updateHeaderTone() {
         const hasLeftHero = window.scrollY >= hero.offsetHeight - header.offsetHeight;
@@ -265,15 +360,15 @@
       }
 
       function showRecommendation() {
-        const pick = recommendations[quizAnswers.taste];
+        selectedBean = pickBean();
         quizForm.hidden = true;
         quizBack.hidden = true;
         document.querySelector(".quiz-progress-bar").style.width = "100%";
         document.querySelector(".quiz-progress-text").textContent = "选好了";
-        document.querySelector(".result-name").textContent = pick.name;
-        document.querySelector(".result-reason").textContent = `${pick.reason}${levelTips[quizAnswers.level]}`;
+        document.querySelector(".result-name").textContent = selectedBean.name;
+        document.querySelector(".result-meta").textContent = `${selectedBean.roast} · ${selectedBean.flavors}`;
+        document.querySelector(".result-reason").textContent = `${selectedBean.description}${levelTips[quizAnswers.level]}`;
         document.querySelector(".result-brew").textContent = brewTips[quizAnswers.brew];
-        quizResult.dataset.card = pick.card;
         quizResult.classList.add("is-active");
       }
 
@@ -291,17 +386,20 @@
       });
 
       document.querySelector(".result-link").addEventListener("click", () => {
-        const cards = document.querySelectorAll(".project-card");
-        const selectedCard = cards[Number(quizResult.dataset.card)];
         quiz.close();
-        selectedCard.scrollIntoView({ behavior: "smooth", block: "center" });
-        selectedCard.classList.add("is-recommended");
-        window.setTimeout(() => selectedCard.classList.remove("is-recommended"), 1800);
+        document.querySelector("#buy").scrollIntoView({ behavior: "smooth", block: "start" });
+        const selectedCard = document.querySelector(`[data-bean-id="${selectedBean.id}"]`);
+        if (selectedCard) {
+          selectedCard.classList.add("is-recommended");
+          window.setTimeout(() => selectedCard.classList.remove("is-recommended"), 1800);
+        }
       });
 
       quiz.addEventListener("click", (event) => {
         if (event.target === quiz) quiz.close();
       });
+
+      renderWeeklyBeans();
     </script>
   </body>
 </html>

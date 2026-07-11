@@ -280,6 +280,12 @@ a {
   margin-bottom: 28px;
 }
 
+.week-label {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -311,6 +317,16 @@ a {
 .timeline-item h3 {
   margin: 0 0 12px;
   font-size: 23px;
+}
+
+.project-card .bean-meta {
+  margin: 0 0 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--sage);
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.55;
 }
 
 .project-card a {
@@ -503,10 +519,18 @@ a {
 }
 
 .quiz-options span,
+.result-meta,
 .result-reason,
 .result-brew {
   color: var(--muted);
   line-height: 1.65;
+}
+
+.result-meta {
+  margin: 12px 0 0;
+  color: var(--sage);
+  font-size: 14px;
+  font-weight: 750;
 }
 
 .quiz-back,
