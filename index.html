@@ -121,5 +121,18 @@
         </div>
       </section>
     </main>
+    <script>
+      const header = document.querySelector(".site-header");
+      const hero = document.querySelector(".hero");
+
+      function updateHeaderTone() {
+        const hasLeftHero = window.scrollY >= hero.offsetHeight - header.offsetHeight;
+        header.classList.toggle("is-on-light", hasLeftHero);
+      }
+
+      window.addEventListener("scroll", updateHeaderTone, { passive: true });
+      window.addEventListener("resize", updateHeaderTone);
+      updateHeaderTone();
+    </script>
   </body>
 </html>
