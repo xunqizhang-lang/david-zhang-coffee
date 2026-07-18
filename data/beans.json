@@ -1,0 +1,105 @@
+{
+  "updatedAt": "2026-07-18",
+  "beans": [
+    {
+      "id": "yirgacheffe",
+      "name": "埃塞俄比亚 · 耶加雪菲",
+      "type": "花香明亮",
+      "roast": "浅烘 · 水洗",
+      "flavors": "茉莉、柠檬、白桃",
+      "description": "茶感干净，花香很轻盈，凉下来会有白桃般的甜。适合清晨，也适合第一次认真感受花香型咖啡。",
+      "tastes": ["floral"],
+      "brews": ["pour-over", "black"],
+      "levels": ["new", "daily"]
+    },
+    {
+      "id": "kenya",
+      "name": "肯尼亚 · 麒麟雅加",
+      "type": "果汁感",
+      "roast": "浅烘 · 水洗",
+      "flavors": "黑加仑、葡萄柚、红糖",
+      "description": "酸甜饱满，像一杯有黑加仑香气的果汁。风味轮廓清楚，适合喜欢明亮口感的人。",
+      "tastes": ["fruity"],
+      "brews": ["pour-over", "black"],
+      "levels": ["daily", "explore"]
+    },
+    {
+      "id": "huila",
+      "name": "哥伦比亚 · 慧兰",
+      "type": "均衡耐喝",
+      "roast": "中浅烘 · 水洗",
+      "flavors": "橙子、焦糖、可可",
+      "description": "酸甜平衡，既有柑橘的清爽，也有焦糖和可可的安稳感，是很容易喜欢上的日常单品。",
+      "tastes": ["floral", "nutty"],
+      "brews": ["pour-over", "black", "milk"],
+      "levels": ["new", "daily"]
+    },
+    {
+      "id": "cerrado",
+      "name": "巴西 · 喜拉多",
+      "type": "奶咖友好",
+      "roast": "中烘 · 日晒",
+      "flavors": "榛果、巧克力、奶油",
+      "description": "酸度低，甜感扎实，加奶后仍能尝到榛果和巧克力，是拿铁和日常美式都很稳的选择。",
+      "tastes": ["nutty"],
+      "brews": ["milk", "black"],
+      "levels": ["new", "daily"]
+    },
+    {
+      "id": "antigua",
+      "name": "危地马拉 · 安提瓜",
+      "type": "甜香醇厚",
+      "roast": "中烘 · 水洗",
+      "flavors": "黑巧、苹果、香料",
+      "description": "有黑巧克力的厚度，也留着一点苹果酸甜和香料感。喜欢传统咖啡香、又想多一点层次的人会很合适。",
+      "tastes": ["nutty"],
+      "brews": ["black", "milk"],
+      "levels": ["daily", "explore"]
+    },
+    {
+      "id": "mandheling",
+      "name": "印尼 · 曼特宁",
+      "type": "低酸厚实",
+      "roast": "中深烘 · 湿刨法",
+      "flavors": "黑巧、雪松、香料",
+      "description": "口感厚、酸度低，带黑巧克力、木质和香料气息。适合不喜欢明亮酸感、偏爱沉稳咖啡的人。",
+      "tastes": ["nutty"],
+      "brews": ["black", "milk"],
+      "levels": ["new", "daily"]
+    },
+    {
+      "id": "geisha",
+      "name": "巴拿马 · 瑰夏",
+      "type": "细腻花香",
+      "roast": "浅烘 · 水洗",
+      "flavors": "佛手柑、茉莉、蜂蜜",
+      "description": "香气细致、层次舒展，像佛手柑茶与蜂蜜。适合愿意慢慢喝、探索细微变化的风味爱好者。",
+      "tastes": ["floral"],
+      "brews": ["pour-over"],
+      "levels": ["explore"]
+    },
+    {
+      "id": "tarrazu",
+      "name": "哥斯达黎加 · 塔拉珠",
+      "type": "清甜圆润",
+      "roast": "中浅烘 · 蜜处理",
+      "flavors": "红苹果、蜂蜜、杏仁",
+      "description": "红苹果般的清甜和蜂蜜质感很讨喜，尾韵带一点杏仁香，既有风味又不过分张扬。",
+      "tastes": ["floral", "nutty"],
+      "brews": ["pour-over", "black"],
+      "levels": ["new", "daily"]
+    },
+    {
+      "id": "rwanda",
+      "name": "卢旺达 · 尼亚马谢凯",
+      "type": "莓果甜感",
+      "roast": "浅烘 · 日晒",
+      "flavors": "红莓、橙花、红糖",
+      "description": "红莓与橙花香气活泼，红糖般的甜感把酸质托得很舒服，适合想尝果香但不想太刺激的人。",
+      "tastes": ["fruity", "floral"],
+      "brews": ["pour-over", "black"],
+      "levels": ["daily", "explore"]
+    }
+  ]
+}
+
