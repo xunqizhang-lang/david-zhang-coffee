@@ -152,6 +152,8 @@ button { color: inherit; }
   align-items: center;
 }
 
+.hero-layout > * { min-width: 0; }
+
 .system-label,
 .section-code,
 .weather-kicker,
@@ -178,9 +180,10 @@ button { color: inherit; }
 }
 
 .site-title-product {
-  font-size: clamp(62px, 8vw, 116px);
+  font-size: clamp(58px, 6.1vw, 88px);
   line-height: .94;
   font-weight: 760;
+  white-space: nowrap;
 }
 
 .hero-tagline {
@@ -544,9 +547,9 @@ button { color: inherit; }
 .project-card button { min-height: 48px; padding: 0 17px; font-size: 16px; }
 .project-card.is-recommended { box-shadow: 0 0 0 4px rgba(200,95,54,.22), var(--shadow); }
 
-.timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.brew-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 
-.timeline-item {
+.brew-card {
   min-height: 320px;
   padding: 30px;
   border: 1px solid var(--line);
@@ -555,20 +558,23 @@ button { color: inherit; }
   box-shadow: var(--soft-shadow);
 }
 
-.timeline-item time {
+.brew-icon {
   display: grid;
-  width: 48px;
+  width: 52px;
   aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
-  color: #fff;
-  background: var(--coffee);
-  font-size: 16px;
-  font-weight: 700;
+  background: var(--surface-soft);
+  font-size: 25px;
 }
 
-.timeline-item h3 { margin: 66px 0 10px; font-size: 27px; line-height: 1.2; }
-.timeline-item p { margin: 0; color: var(--muted); font-size: 17px; }
+.brew-card > p { margin: 28px 0 3px; color: var(--muted); font-size: 15px; }
+.brew-card h3 { margin: 0; font-size: 27px; line-height: 1.2; }
+.brew-card > strong { display: block; margin: 18px 0; color: var(--coffee); font-size: 42px; line-height: 1; }
+.brew-card dl { margin: 0; }
+.brew-card dl div { padding: 7px 0; display: flex; justify-content: space-between; border-top: 1px solid var(--line); }
+.brew-card dt { color: var(--muted); }
+.brew-card dd { margin: 0; font-weight: 700; }
 
 .contact-band {
   margin-top: 46px;
@@ -685,7 +691,7 @@ button { color: inherit; }
   .weather-section { grid-template-columns: 1fr; }
   .project-grid { overflow-x: auto; grid-template-columns: repeat(3, minmax(310px, 1fr)); padding-bottom: 12px; scroll-snap-type: x mandatory; }
   .project-card { scroll-snap-align: start; }
-  .timeline-item { padding: 24px; }
+  .brew-card { padding: 24px; }
 }
 
 @media (max-width: 700px) {
@@ -698,7 +704,7 @@ button { color: inherit; }
   .hero { min-height: 820px; }
   .hero-layout { width: calc(100% - 34px); margin: 42px auto 0; padding: 82px 0 76px; gap: 28px; }
   .site-title-name { font-size: 34px; }
-  .site-title-product { font-size: clamp(56px, 17vw, 78px); }
+  .site-title-product { font-size: clamp(44px, 12vw, 68px); }
   .hero-tagline { margin-top: 22px; font-size: 24px; }
   .hero-copy { font-size: 16px; line-height: 1.62; }
   .hero-actions { margin-top: 22px; gap: 16px; }
@@ -726,9 +732,8 @@ button { color: inherit; }
   .weather-source { left: 20px; }
   .section-heading h2 { font-size: 42px; }
   .project-grid { grid-template-columns: repeat(3, minmax(84vw, 1fr)); margin-right: -14px; }
-  .timeline { overflow-x: auto; grid-template-columns: repeat(3, minmax(78vw, 1fr)); padding-bottom: 12px; scroll-snap-type: x mandatory; }
-  .timeline-item { min-height: 290px; scroll-snap-align: start; }
-  .timeline-item h3 { margin-top: 48px; }
+  .brew-grid { overflow-x: auto; grid-template-columns: repeat(3, minmax(78vw, 1fr)); padding-bottom: 12px; scroll-snap-type: x mandatory; }
+  .brew-card { min-height: 360px; scroll-snap-align: start; }
   .contact-band { margin-top: 30px; padding: 28px 22px; display: block; border-radius: 22px; }
   .contact-band h2 { font-size: 29px; }
   .contact-actions { margin-top: 22px; }
@@ -740,11 +745,11 @@ button { color: inherit; }
 }
 
 @media (max-width: 380px) {
-  .site-title-product { font-size: 52px; }
+  .site-title-product { font-size: 39px; }
   .hero-tagline { font-size: 21px; }
   .hero-actions { align-items: flex-start; flex-direction: column; }
-  .selector-console { padding: 18px; }
-  .console-main h2 { font-size: 34px; }
+  .selector-console { width: 100%; padding: 18px; }
+  .console-main h2 { font-size: 31px; }
   .studio-tab { font-size: 14px; }
 }
 

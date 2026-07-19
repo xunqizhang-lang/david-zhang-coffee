@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>从这包开始 | David Zhang 的零基础选豆指南</title>
+    <title>David 选豆 | 零基础咖啡豆指南</title>
     <meta
       name="description"
-      content="从这包开始，David Zhang 为零基础咖啡爱好者提供简单、好懂的选豆建议。"
+      content="David Zhang 为零基础咖啡爱好者提供简单、好懂的选豆建议。"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -29,17 +29,14 @@
         <div class="hero-overlay"></div>
         <div class="hero-content hero-layout">
           <div class="hero-copy-block">
-            <p class="system-label">零基础选豆指南</p>
-            <h1 class="site-title" aria-label="David Zhang · 从这包开始">
+            <p class="system-label">第一次选豆？慢慢来</p>
+            <h1 class="site-title" aria-label="David Zhang · 选豆，很简单。">
               <span class="site-title-name" aria-hidden="true">David Zhang</span>
-              <span class="site-title-product" aria-hidden="true">从这包开始</span>
+              <span class="site-title-product" aria-hidden="true">选豆，很简单。</span>
             </h1>
             <p class="hero-tagline">
               <span class="hero-title-line">把一杯好咖啡，</span>
               <span class="hero-title-line">带到你的早晨里。</span>
-            </p>
-            <p class="hero-copy">
-              不需要先学会复杂术语。告诉我你怎么喝、喜欢什么味道，我会把合适的那一包递给你。
             </p>
             <div class="hero-actions" aria-label="主要操作">
               <a class="button secondary" href="#studio" data-show-panel="buy">查看本周豆单</a>
@@ -48,52 +45,52 @@
           </div>
 
           <aside class="selector-console" aria-label="David 的快速选豆工具">
-            <div class="console-head"><span>David 的选豆建议</span><span>约 30 秒</span></div>
+            <div class="console-head"><span>David 帮你看看</span><span>大约半分钟</span></div>
             <div class="console-main">
               <p>不知道从哪包开始？</p>
               <h2>让我帮你选一包。</h2>
-              <p class="console-copy">三个简单问题，约 30 秒。不考你咖啡知识，只问你平时怎么喝。</p>
+              <p class="console-copy">回答三个问题，我按你平时的喝法来挑。</p>
             </div>
             <button class="console-trigger" type="button" data-open-quiz>
               <span>开始选豆</span><span aria-hidden="true">→</span>
             </button>
           </aside>
         </div>
-        <div class="hero-readout" aria-hidden="true"><span>为每天的一杯，找到刚刚好的豆子</span><span>继续探索 ↓</span></div>
+        <div class="hero-readout" aria-hidden="true"><span>每天喝的豆子，顺口比稀奇重要</span><span>往下看看 ↓</span></div>
       </section>
 
       <section class="coffee-studio" id="studio" aria-labelledby="studio-title">
         <div class="studio-heading">
           <div>
-            <p class="section-code">David 的选豆空间</p>
-            <h2 id="studio-title">今天想从哪里开始？</h2>
+            <p class="section-code">David 帮你挑</p>
+            <h2 id="studio-title">今天想怎么选？</h2>
           </div>
-          <p>不追噱头，只挑香气干净、甜感舒服、每天都想喝的豆子。</p>
+          <p>按天气、看豆单，或者照着冲。</p>
         </div>
 
         <div class="studio-tabs" role="tablist" aria-label="选豆方式">
           <button class="studio-tab is-active" id="tab-weather" type="button" role="tab" aria-selected="true" aria-controls="weather" data-panel="weather">天气选豆</button>
           <button class="studio-tab" id="tab-buy" type="button" role="tab" aria-selected="false" aria-controls="buy" data-panel="buy">本周豆单</button>
-          <button class="studio-tab" id="tab-notes" type="button" role="tab" aria-selected="false" aria-controls="notes" data-panel="notes">我的标准</button>
+          <button class="studio-tab" id="tab-brew" type="button" role="tab" aria-selected="false" aria-controls="brew" data-panel="brew">冲煮助手</button>
         </div>
 
         <div class="studio-viewport">
       <section class="weather-section studio-panel is-active" id="weather" role="tabpanel" aria-labelledby="tab-weather">
         <div class="weather-copy">
-          <p class="weather-kicker">根据此刻的天气</p>
-          <h2 id="weather-title">按今天的天气，选一支豆。</h2>
-          <p>炎热时想喝得清亮，阴雨天更需要甜和温暖。告诉我城市，我会结合未来一周的温度、湿度和降雨来推荐。</p>
+          <p class="weather-kicker">先看看你那里的天气</p>
+          <h2 id="weather-title">今天喝哪支？</h2>
+          <p>输入城市，我按这几天的天气来挑。</p>
         </div>
         <div class="weather-tool">
           <form class="city-form" id="city-form">
             <label for="city-input">你所在的城市</label>
             <div class="city-input-row">
               <input id="city-input" name="city" type="search" placeholder="例如：上海" autocomplete="address-level2" required />
-              <button type="submit">看看今天喝什么</button>
+              <button type="submit">看看今天喝哪支</button>
             </div>
           </form>
           <button class="location-button" id="use-location" type="button">使用我的位置</button>
-          <p class="location-note">位置只用于本次天气查询，不会保存。</p>
+          <p class="location-note">我只看这一次，不会记住你的位置。</p>
           <p class="weather-status" id="weather-status" role="status" aria-live="polite"></p>
         </div>
         <div class="weather-result" id="weather-result" hidden>
@@ -103,7 +100,7 @@
             <p class="weather-summary"></p>
           </div>
           <div class="weather-pick">
-            <p class="weather-kicker">David 今天会递给你</p>
+            <p class="weather-kicker">按今天的天气，我会选这支</p>
             <h3 class="weather-bean-name"></h3>
             <p class="weather-bean-meta"></p>
             <p class="weather-reason"></p>
@@ -116,7 +113,7 @@
       <section class="section studio-panel" id="buy" role="tabpanel" aria-labelledby="tab-buy" hidden>
         <div class="section-heading">
           <div>
-            <p class="section-code">David 本周喝过以后，愿意推荐的豆子</p>
+            <p class="section-code">这三支我这周喝过，也愿意再买</p>
             <h2>本周推荐</h2>
             <p class="week-label" id="week-label"></p>
           </div>
@@ -124,35 +121,35 @@
         <div class="project-grid" id="weekly-beans"></div>
       </section>
 
-      <section class="section timeline-section studio-panel" id="notes" role="tabpanel" aria-labelledby="tab-notes" hidden>
+      <section class="section brew-section studio-panel" id="brew" role="tabpanel" aria-labelledby="tab-brew" hidden>
         <div class="section-heading">
           <div>
-            <p class="section-code">简单、透明，不用先学会术语</p>
-            <h2>我会这样选豆</h2>
+            <p class="section-code">豆子选好了，接下来照着冲</p>
+            <h2>第一次冲，照这个数就行。</h2>
           </div>
         </div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <time>01</time>
-            <div>
-              <h3>先看新鲜度</h3>
-              <p>我会优先推荐烘焙日期清楚、养豆状态合适的咖啡豆，让你拿到手时正好进入好喝窗口。</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <time>02</time>
-            <div>
-              <h3>再看风味是否友好</h3>
-              <p>不是越复杂越好，而是香气、甜感、酸质和余韵要平衡，让人喝完还想再冲一杯。</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <time>03</time>
-            <div>
-              <h3>最后看适不适合你</h3>
-              <p>我会把每支豆子的适合人群写清楚：新手、奶咖、手冲、送礼，少一点纠结，多一点确定。</p>
-            </div>
-          </div>
+        <div class="brew-grid">
+          <article class="brew-card">
+            <span class="brew-icon" aria-hidden="true">☕</span>
+            <p>清爽 · 喝香气</p>
+            <h3>手冲</h3>
+            <strong>1 : 16</strong>
+            <dl><div><dt>咖啡豆</dt><dd>15g</dd></div><div><dt>热水</dt><dd>240ml</dd></div><div><dt>水温</dt><dd>92°C</dd></div><div><dt>时间</dt><dd>2:30</dd></div></dl>
+          </article>
+          <article class="brew-card">
+            <span class="brew-icon" aria-hidden="true">🥄</span>
+            <p>浓郁 · 省时间</p>
+            <h3>意式 / 美式</h3>
+            <strong>1 : 2</strong>
+            <dl><div><dt>咖啡粉</dt><dd>18g</dd></div><div><dt>浓缩液</dt><dd>36g</dd></div><div><dt>加水</dt><dd>120ml</dd></div><div><dt>时间</dt><dd>28s</dd></div></dl>
+          </article>
+          <article class="brew-card">
+            <span class="brew-icon" aria-hidden="true">🥛</span>
+            <p>柔和 · 甜感足</p>
+            <h3>奶咖</h3>
+            <strong>1 : 5</strong>
+            <dl><div><dt>浓缩液</dt><dd>36g</dd></div><div><dt>牛奶</dt><dd>180ml</dd></div><div><dt>奶温</dt><dd>60°C</dd></div><div><dt>杯量</dt><dd>220ml</dd></div></dl>
+          </article>
         </div>
       </section>
 
@@ -160,11 +157,11 @@
 
       <section class="contact-band" aria-label="购买联系方式">
         <div>
-          <p class="section-code">一站式选豆</p>
-          <h2>从口味到冲法，在这里找到属于你的那一包。</h2>
+          <p class="section-code">还是拿不准？</p>
+          <h2>说说你怎么喝，我帮你挑一支。</h2>
         </div>
         <div class="contact-actions">
-          <button class="button primary" type="button" data-open-quiz>让 David 帮我选</button>
+          <button class="button primary" type="button" data-open-quiz>帮我挑一支</button>
         </div>
       </section>
       </section>
@@ -174,9 +171,8 @@
       <button class="quiz-close" type="button" aria-label="关闭选豆问答">×</button>
       <div class="quiz-shell">
         <div class="quiz-intro">
-          <p class="quiz-note">David 的选豆桌</p>
-          <h2 id="quiz-title">告诉我你平时怎么喝。</h2>
-          <p>三个小问题，我会从本周的豆子里替你挑一支。</p>
+          <p class="quiz-note">David 帮你挑一支</p>
+          <h2 id="quiz-title">平时怎么喝？</h2>
         </div>
 
         <div class="quiz-progress" aria-label="答题进度">
@@ -189,13 +185,13 @@
             <legend>你最常怎么喝咖啡？</legend>
             <div class="quiz-options">
               <button type="button" data-answer="brew" data-value="pour-over">
-                <strong>手冲</strong><span>喜欢慢慢冲，也在意味道的变化</span>
+                <strong>手冲</strong><span>想喝出香气变化</span>
               </button>
               <button type="button" data-answer="brew" data-value="black">
-                <strong>美式或黑咖啡</strong><span>想要干净、顺口，日常喝不累</span>
+                <strong>美式或黑咖啡</strong><span>顺口，早上喝不累</span>
               </button>
               <button type="button" data-answer="brew" data-value="milk">
-                <strong>拿铁或奶咖</strong><span>希望加奶后仍然香甜、有存在感</span>
+                <strong>拿铁或奶咖</strong><span>加奶也要有咖啡香</span>
               </button>
             </div>
           </fieldset>
@@ -204,41 +200,41 @@
             <legend>哪种味道更吸引你？</legend>
             <div class="quiz-options">
               <button type="button" data-answer="taste" data-value="floral">
-                <strong>花香与柑橘</strong><span>清亮、轻盈，早晨喝很舒服</span>
+                <strong>花香与柑橘</strong><span>清爽、轻盈</span>
               </button>
               <button type="button" data-answer="taste" data-value="nutty">
-                <strong>坚果与巧克力</strong><span>温暖、香甜，是熟悉的咖啡味</span>
+                <strong>坚果与巧克力</strong><span>香甜、低酸</span>
               </button>
               <button type="button" data-answer="taste" data-value="fruity">
-                <strong>莓果与酒香</strong><span>层次鲜明，想尝一点特别的</span>
+                <strong>莓果与酒香</strong><span>果香更明显</span>
               </button>
             </div>
           </fieldset>
 
           <fieldset class="quiz-step" data-step="2">
-            <legend>你和咖啡熟悉到什么程度？</legend>
+            <legend>你喝咖啡多久了？</legend>
             <div class="quiz-options">
               <button type="button" data-answer="level" data-value="new">
-                <strong>刚开始认真喝</strong><span>希望好冲、稳定，不需要复杂技巧</span>
+                <strong>刚开始喝</strong><span>好冲、稳定就行</span>
               </button>
               <button type="button" data-answer="level" data-value="daily">
-                <strong>每天都会喝</strong><span>已经知道自己大概喜欢什么</span>
+                <strong>每天都会喝</strong><span>大概知道自己喜欢什么</span>
               </button>
               <button type="button" data-answer="level" data-value="explore">
-                <strong>喜欢探索风味</strong><span>愿意为一杯有个性的咖啡花点时间</span>
+                <strong>喝了有一阵</strong><span>愿意调一调研磨和水温</span>
               </button>
             </div>
           </fieldset>
         </form>
 
         <section class="quiz-result" aria-live="polite">
-          <p class="quiz-note">我会先递给你这一包</p>
+          <p class="quiz-note">我想先让你试试这支</p>
           <h3 class="result-name"></h3>
           <p class="result-meta"></p>
           <p class="result-reason"></p>
           <p class="result-brew"></p>
           <div class="quiz-result-actions">
-            <button class="button primary result-link" type="button">回到本周豆单</button>
+            <button class="button primary result-link" type="button">看看本周还有什么</button>
             <button class="quiz-restart" type="button">重新选一次</button>
           </div>
         </section>
@@ -265,7 +261,7 @@
           type: "花香明亮",
           roast: "浅烘 · 水洗",
           flavors: "茉莉、柠檬、白桃",
-          description: "茶感干净，花香很轻盈，凉下来会有白桃般的甜。适合清晨，也适合第一次认真感受花香型咖啡。",
+          description: "像茉莉花茶，放凉后有白桃甜。清爽，香气也很好认。",
           tastes: ["floral"], brews: ["pour-over", "black"], levels: ["new", "daily"]
         },
         {
@@ -274,7 +270,7 @@
           type: "果汁感",
           roast: "浅烘 · 水洗",
           flavors: "黑加仑、葡萄柚、红糖",
-          description: "酸甜饱满，像一杯有黑加仑香气的果汁。风味轮廓清楚，适合喜欢明亮口感的人。",
+          description: "黑加仑和葡萄柚的酸甜很明显，像一杯不加糖的果汁。",
           tastes: ["fruity"], brews: ["pour-over", "black"], levels: ["daily", "explore"]
         },
         {
@@ -283,7 +279,7 @@
           type: "均衡耐喝",
           roast: "中浅烘 · 水洗",
           flavors: "橙子、焦糖、可可",
-          description: "酸甜平衡，既有柑橘的清爽，也有焦糖和可可的安稳感，是很容易喜欢上的日常单品。",
+          description: "先是橙子，后面是焦糖和可可。黑咖啡、加奶都顺口。",
           tastes: ["floral", "nutty"], brews: ["pour-over", "black", "milk"], levels: ["new", "daily"]
         },
         {
@@ -292,7 +288,7 @@
           type: "奶咖友好",
           roast: "中烘 · 日晒",
           flavors: "榛果、巧克力、奶油",
-          description: "酸度低，甜感扎实，加奶后仍能尝到榛果和巧克力，是拿铁和日常美式都很稳的选择。",
+          description: "酸味低，榛果和巧克力很扎实。做拿铁尤其稳。",
           tastes: ["nutty"], brews: ["milk", "black"], levels: ["new", "daily"]
         },
         {
@@ -301,7 +297,7 @@
           type: "甜香醇厚",
           roast: "中烘 · 水洗",
           flavors: "黑巧、苹果、香料",
-          description: "有黑巧克力的厚度，也留着一点苹果酸甜和香料感。喜欢传统咖啡香、又想多一点层次的人会很合适。",
+          description: "黑巧克力是主调，后面藏着苹果酸甜和一点香料。",
           tastes: ["nutty"], brews: ["black", "milk"], levels: ["daily", "explore"]
         },
         {
@@ -310,7 +306,7 @@
           type: "低酸厚实",
           roast: "中深烘 · 湿刨法",
           flavors: "黑巧、雪松、香料",
-          description: "口感厚、酸度低，带黑巧克力、木质和香料气息。适合不喜欢明亮酸感、偏爱沉稳咖啡的人。",
+          description: "厚、低酸，黑巧克力和木质香很明显。",
           tastes: ["nutty"], brews: ["black", "milk"], levels: ["new", "daily"]
         },
         {
@@ -319,7 +315,7 @@
           type: "细腻花香",
           roast: "浅烘 · 水洗",
           flavors: "佛手柑、茉莉、蜂蜜",
-          description: "香气细致、层次舒展，像佛手柑茶与蜂蜜。适合愿意慢慢喝、探索细微变化的风味爱好者。",
+          description: "像带佛手柑和茉莉香的茶，放凉后会更甜。",
           tastes: ["floral"], brews: ["pour-over"], levels: ["explore"]
         },
         {
@@ -328,7 +324,7 @@
           type: "清甜圆润",
           roast: "中浅烘 · 蜜处理",
           flavors: "红苹果、蜂蜜、杏仁",
-          description: "红苹果般的清甜和蜂蜜质感很讨喜，尾韵带一点杏仁香，既有风味又不过分张扬。",
+          description: "红苹果和蜂蜜的甜很好认，最后有一点杏仁香。",
           tastes: ["floral", "nutty"], brews: ["pour-over", "black"], levels: ["new", "daily"]
         },
         {
@@ -337,7 +333,7 @@
           type: "莓果甜感",
           roast: "浅烘 · 日晒",
           flavors: "红莓、橙花、红糖",
-          description: "红莓与橙花香气活泼，红糖般的甜感把酸质托得很舒服，适合想尝果香但不想太刺激的人。",
+          description: "先是红莓和橙花，咽下去以后有红糖甜。",
           tastes: ["fruity", "floral"], brews: ["pour-over", "black"], levels: ["daily", "explore"]
         }
       ];
@@ -348,15 +344,15 @@
       const weatherResult = document.querySelector("#weather-result");
 
       const brewTips = {
-        "pour-over": "建议喝法：先用手冲，水温稍低一点，让甜感和香气慢慢出来。",
-        black: "建议喝法：做成美式或黑咖啡，比例清爽一些，日常喝会很舒服。",
-        milk: "建议喝法：做拿铁时少放一点奶，能保留咖啡本身的甜香。"
+        "pour-over": "先用手冲，水温低一点，香气会更清楚。",
+        black: "做美式时多加一点水，日常喝更顺口。",
+        milk: "做拿铁时少放一点奶，咖啡香会更明显。"
       };
 
       const levelTips = {
-        new: "这支对冲煮也比较宽容，作为认真喝咖啡的起点很合适。",
-        daily: "它有足够的稳定感，也不会因为天天喝而显得单调。",
-        explore: "可以试着调整研磨和水温，你会喝到更细微的变化。"
+        new: "这支不难冲，新手也容易喝明白。",
+        daily: "味道稳定，天天喝也不会腻。",
+        explore: "换一档研磨或水温，会喝到不一样的细节。"
       };
 
       function getIsoWeek(date) {
@@ -405,7 +401,7 @@
             <p class="bean-meta">${bean.roast}</p>
             <div class="flavor-profile" aria-label="香气层次：${bean.flavors}">${flavorProfile}</div>
             <p>${bean.description}</p>
-            <button type="button" data-open-quiz>看看它适不适合我</button>
+            <button type="button" data-open-quiz>这支适合我吗？</button>
           </article>
         `}).join("");
       }
@@ -442,27 +438,27 @@
           return {
             tastes: ["floral", "fruity"],
             brews: ["pour-over", "black"],
-            reason: "未来一周偏热，清亮的花果香和轻盈口感会更舒服，也很适合放凉或做冰手冲。"
+            reason: "这几天偏热，我会选清爽的花果香，放凉或做冰手冲都好喝。"
           };
         }
         if (weather.averageHigh <= 13) {
           return {
             tastes: ["nutty"],
             brews: ["milk", "black"],
-            reason: "未来一周气温偏低，坚果、巧克力和更厚实的甜感，会让这一杯喝起来更温暖。"
+            reason: "这几天偏冷，坚果和巧克力的甜香更合适。"
           };
         }
         if (weather.rainChance >= 55 || weather.humidity >= 78) {
           return {
             tastes: ["nutty", "fruity"],
             brews: ["black", "milk"],
-            reason: "这几天湿润或容易下雨，我更想给你一杯甜感清楚、口感圆润的咖啡。"
+            reason: "这几天潮湿多雨，我会选甜感清楚、口感圆一点的。"
           };
         }
         return {
           tastes: ["floral", "nutty"],
           brews: ["pour-over", "black"],
-          reason: "天气温和，今天适合一支酸甜平衡、既有香气又能轻松日常喝的豆子。"
+          reason: "天气温和，今天喝一支酸甜平衡的。"
         };
       }
 
@@ -495,7 +491,7 @@
       }
 
       async function fetchWeather(latitude, longitude, placeName) {
-        weatherStatus.textContent = "正在看看你那里的天气…";
+        weatherStatus.textContent = "我看看你那里的天气…";
         weatherResult.hidden = true;
         try {
           const params = new URLSearchParams({
@@ -507,7 +503,7 @@
             forecast_days: "7"
           });
           const response = await fetch(`https://api.open-meteo.com/v1/forecast?${params}`);
-          if (!response.ok) throw new Error("天气服务暂时没有回应");
+          if (!response.ok) throw new Error("天气暂时查不到");
           const data = await response.json();
           const average = (values) => values.reduce((sum, value) => sum + value, 0) / values.length;
           const weather = {
@@ -528,18 +524,18 @@
           weatherStatus.textContent = "";
           weatherResult.hidden = false;
         } catch (error) {
-          weatherStatus.textContent = `${error.message}，请稍后再试。`;
+          weatherStatus.textContent = `${error.message}，等一会儿再试。`;
         }
       }
 
       async function findCity(cityName) {
-        weatherStatus.textContent = "正在寻找这座城市…";
+        weatherStatus.textContent = "我找找这座城市…";
         weatherResult.hidden = true;
         try {
           const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=1&language=zh&format=json`);
-          if (!response.ok) throw new Error("城市查询暂时不可用");
+          if (!response.ok) throw new Error("城市暂时查不到");
           const data = await response.json();
-          if (!data.results?.length) throw new Error("没有找到这座城市，请换一种写法");
+          if (!data.results?.length) throw new Error("没找到这座城市，换个写法试试");
           const city = data.results[0];
           const placeName = [city.name, city.admin1].filter(Boolean).join(" · ");
           await fetchWeather(city.latitude, city.longitude, placeName);
@@ -653,13 +649,13 @@
 
       document.querySelector("#use-location").addEventListener("click", () => {
         if (!navigator.geolocation) {
-          weatherStatus.textContent = "当前浏览器不支持定位，请直接输入城市。";
+          weatherStatus.textContent = "这个浏览器不能定位，直接输入城市吧。";
           return;
         }
-        weatherStatus.textContent = "等待你允许使用位置…";
+        weatherStatus.textContent = "等你允许使用位置…";
         navigator.geolocation.getCurrentPosition(
           (position) => fetchWeather(position.coords.latitude, position.coords.longitude, "你的位置"),
-          () => { weatherStatus.textContent = "没有取得位置，请直接输入城市。"; },
+          () => { weatherStatus.textContent = "没拿到位置，直接输入城市吧。"; },
           { enableHighAccuracy: false, timeout: 8000, maximumAge: 1800000 }
         );
       });
