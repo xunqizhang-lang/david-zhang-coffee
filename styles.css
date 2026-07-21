@@ -1,17 +1,19 @@
 :root {
   color-scheme: light;
-  --ink: #231d19;
-  --muted: #706861;
-  --paper: #f4f1eb;
-  --surface: #fffdf9;
-  --surface-soft: #ebe5dd;
-  --line: rgba(60, 45, 36, 0.14);
-  --coffee: #643a29;
-  --accent: #c85f36;
-  --accent-dark: #a74728;
-  --white: #fffaf3;
-  --shadow: 0 24px 70px rgba(55, 36, 27, 0.13);
-  --soft-shadow: 0 10px 32px rgba(55, 36, 27, 0.09);
+  --ink: #181716;
+  --muted: #69635e;
+  --paper: #f7f6f2;
+  --surface: #fcfbf7;
+  --surface-soft: #ece9e2;
+  --line: rgba(42, 36, 31, 0.16);
+  --coffee: #4a352c;
+  --accent: #d97757;
+  --accent-dark: #a84d32;
+  --white: #fffdf8;
+  --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", STSong, SimSun, Georgia, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Microsoft YaHei", sans-serif;
+  --shadow: 0 20px 52px rgba(45, 35, 29, 0.11);
+  --soft-shadow: 0 7px 22px rgba(45, 35, 29, 0.07);
 }
 
 * { box-sizing: border-box; }
@@ -26,9 +28,14 @@ body {
   overflow-x: hidden;
   background: var(--paper);
   color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", "Microsoft YaHei", sans-serif;
+  font-family: var(--font-body);
   font-size: 18px;
   line-height: 1.65;
+}
+
+::selection {
+  color: var(--ink);
+  background: rgba(217, 119, 87, .34);
 }
 
 button,
@@ -58,7 +65,7 @@ button { color: inherit; }
   color: var(--white);
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.38);
-  border-radius: 22px;
+  border-radius: 14px;
   background:
     linear-gradient(135deg, rgba(255,255,255,.27), rgba(255,255,255,.07) 52%, rgba(255,255,255,.18)),
     rgba(35, 28, 24, .16);
@@ -151,7 +158,7 @@ button { color: inherit; }
   display: inline-flex;
   align-items: center;
   border: 0;
-  border-radius: 12px;
+  border-radius: 8px;
   background: transparent;
   font-size: 15px;
   font-weight: 600;
@@ -219,17 +226,23 @@ button { color: inherit; }
   color: #ffd2bd;
   font-size: clamp(28px, 3.2vw, 46px);
   line-height: 1.12;
-  font-weight: 720;
+  font-family: var(--font-display);
+  font-weight: 600;
 }
 
-.site-title { margin: 0; letter-spacing: 0; }
+.site-title {
+  margin: 0;
+  font-family: var(--font-display);
+  letter-spacing: 0;
+  text-wrap: balance;
+}
 
 .site-title-product { display: block; }
 
 .site-title-product {
   font-size: clamp(58px, 6.1vw, 88px);
-  line-height: .94;
-  font-weight: 760;
+  line-height: 1.02;
+  font-weight: 600;
   white-space: nowrap;
 }
 
@@ -237,7 +250,9 @@ button { color: inherit; }
   margin: 30px 0 16px;
   font-size: clamp(23px, 2.6vw, 36px);
   line-height: 1.24;
-  font-weight: 580;
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-wrap: balance;
 }
 
 .hero-title-line { display: block; }
@@ -263,7 +278,7 @@ button { color: inherit; }
 .weather-quiz-link,
 .project-card button {
   border: 0;
-  border-radius: 14px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 700;
   transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
@@ -308,7 +323,7 @@ button { color: inherit; }
   overflow: hidden;
   color: var(--ink);
   border: 1px solid rgba(255,255,255,.52);
-  border-radius: 24px;
+  border-radius: 12px;
   background: rgba(255,250,243,.87);
   box-shadow: 0 32px 80px rgba(0,0,0,.25);
   backdrop-filter: blur(24px) saturate(118%);
@@ -328,9 +343,11 @@ button { color: inherit; }
 
 .console-main h2 {
   margin: 0;
+  font-family: var(--font-display);
   font-size: clamp(38px, 4.2vw, 58px);
-  line-height: 1.05;
+  line-height: 1.12;
   letter-spacing: 0;
+  font-weight: 600;
 }
 
 .console-copy {
@@ -368,7 +385,10 @@ button { color: inherit; }
 .weather-copy h2,
 .contact-band h2 {
   margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .studio-heading h2 {
@@ -389,7 +409,7 @@ button { color: inherit; }
   display: flex;
   gap: 4px;
   border: 1px solid var(--line);
-  border-radius: 17px;
+  border-radius: 10px;
   background: rgba(226,220,211,.74);
 }
 
@@ -398,7 +418,7 @@ button { color: inherit; }
   min-height: 50px;
   padding: 0 20px;
   border: 0;
-  border-radius: 12px;
+  border-radius: 7px;
   background: transparent;
   font-size: 17px;
   font-weight: 650;
@@ -433,7 +453,7 @@ button { color: inherit; }
   align-content: start;
   overflow: hidden;
   color: var(--white);
-  border-radius: 28px;
+  border-radius: 12px;
   background: #2c2521;
   box-shadow: var(--shadow);
 }
@@ -449,7 +469,7 @@ button { color: inherit; }
 
 .weather-tool {
   padding: 30px;
-  border-radius: 22px;
+  border-radius: 8px;
   color: var(--ink);
   background: var(--surface);
 }
@@ -463,7 +483,7 @@ button { color: inherit; }
   min-height: 54px;
   padding: 0 17px;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 8px;
   outline: none;
   background: #f5f1eb;
   font-size: 17px;
@@ -498,14 +518,14 @@ button { color: inherit; }
 .weather-now,
 .weather-pick {
   padding: 28px;
-  border-radius: 22px;
+  border-radius: 8px;
   background: rgba(255,255,255,.08);
 }
 
 .weather-temperature { display: block; font-size: 64px; line-height: 1; }
 .weather-place,
 .weather-summary { margin: 0 0 10px; color: rgba(255,250,243,.72); }
-.weather-pick h3 { margin: 0; font-size: 32px; line-height: 1.2; }
+.weather-pick h3 { margin: 0; font-family: var(--font-display); font-size: 32px; line-height: 1.2; font-weight: 600; }
 .weather-bean-meta,
 .weather-reason { color: rgba(255,250,243,.75); }
 .weather-quiz-link { min-height: 48px; padding: 0 18px; }
@@ -535,7 +555,7 @@ button { color: inherit; }
   padding: 18px 18px 22px;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 24px;
+  border-radius: 8px;
   background: var(--surface);
   box-shadow: var(--soft-shadow);
   transition: transform .25s ease, box-shadow .25s ease;
@@ -544,7 +564,13 @@ button { color: inherit; }
 .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
 
 .project-type { margin: 0 0 5px; color: var(--accent-dark); font-size: 15px; font-weight: 750; }
-.project-card h3 { margin: 0; font-size: 25px; line-height: 1.25; }
+.project-card h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 27px;
+  line-height: 1.32;
+  font-weight: 600;
+}
 .bean-meta { color: var(--coffee); font-weight: 650; }
 .flavor-profile {
   margin: 20px 0;
@@ -587,7 +613,7 @@ button { color: inherit; }
   min-height: 320px;
   padding: 30px;
   border: 1px solid var(--line);
-  border-radius: 24px;
+  border-radius: 8px;
   background: var(--surface);
   box-shadow: var(--soft-shadow);
 }
@@ -603,7 +629,7 @@ button { color: inherit; }
 }
 
 .brew-card > p { margin: 28px 0 3px; color: var(--muted); font-size: 15px; }
-.brew-card h3 { margin: 0; font-size: 27px; line-height: 1.2; }
+.brew-card h3 { margin: 0; font-family: var(--font-display); font-size: 29px; line-height: 1.25; font-weight: 600; }
 .brew-card > strong { display: block; margin: 18px 0; color: var(--coffee); font-size: 42px; line-height: 1; }
 .brew-card dl { margin: 0; }
 .brew-card dl div { padding: 7px 0; display: flex; justify-content: space-between; border-top: 1px solid var(--line); }
@@ -618,7 +644,7 @@ button { color: inherit; }
   justify-content: space-between;
   gap: 28px;
   color: var(--white);
-  border-radius: 26px;
+  border-radius: 8px;
   background: var(--coffee);
 }
 
@@ -631,7 +657,7 @@ button { color: inherit; }
   padding: 0;
   overflow: auto;
   border: 0;
-  border-radius: 28px;
+  border-radius: 12px;
   color: var(--ink);
   background: var(--surface);
   box-shadow: 0 34px 100px rgba(35,23,17,.35);
@@ -655,7 +681,7 @@ button { color: inherit; }
 
 .quiz-shell { padding: 48px; }
 .quiz-intro { padding-right: 50px; }
-.quiz-intro h2 { margin: 0; font-size: clamp(34px, 5vw, 54px); line-height: 1.08; }
+.quiz-intro h2 { margin: 0; font-family: var(--font-display); font-size: clamp(34px, 5vw, 54px); line-height: 1.12; font-weight: 600; }
 .quiz-intro > p:last-child { color: var(--muted); }
 
 .quiz-progress {
@@ -691,14 +717,14 @@ button { color: inherit; }
 
 .quiz-step { margin: 0; padding: 0; border: 0; }
 .quiz-step:not(.is-active) { display: none; }
-.quiz-step legend { margin-bottom: 22px; font-size: 26px; font-weight: 750; }
+.quiz-step legend { margin-bottom: 22px; font-family: var(--font-display); font-size: 28px; font-weight: 600; }
 .quiz-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
 .quiz-options button {
   min-height: 118px;
   padding: 18px;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 8px;
   background: #f5f1eb;
   font-size: 17px;
   font-weight: 700;
@@ -710,7 +736,7 @@ button { color: inherit; }
 .quiz-back,
 .quiz-restart { margin-top: 20px; padding: 0; border: 0; color: var(--accent-dark); background: transparent; font-weight: 700; cursor: pointer; }
 .quiz-result:not(.is-active) { display: none; }
-.quiz-result h3 { margin: 0; font-size: 35px; }
+.quiz-result h3 { margin: 0; font-family: var(--font-display); font-size: 37px; font-weight: 600; }
 .result-meta { color: var(--coffee); font-weight: 700; }
 .result-reason,
 .result-brew { color: var(--muted); }
@@ -720,7 +746,7 @@ button { color: inherit; }
   width: min(520px, calc(100% - 28px));
   padding: 0;
   border: 1px solid rgba(255,255,255,.72);
-  border-radius: 28px;
+  border-radius: 12px;
   color: var(--ink);
   background: rgba(255,253,249,.84);
   box-shadow: 0 34px 100px rgba(35,23,17,.28);
@@ -747,7 +773,7 @@ button { color: inherit; }
 }
 
 .account-shell { padding: 44px; }
-.account-shell h2 { margin: 0; font-size: 48px; line-height: 1; }
+.account-shell h2 { margin: 0; font-family: var(--font-display); font-size: 48px; line-height: 1.08; font-weight: 600; }
 .account-shell > p { margin: 14px 0 28px; color: var(--muted); }
 
 .account-providers { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -759,7 +785,7 @@ button { color: inherit; }
   align-items: center;
   gap: 12px;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 8px;
   background: rgba(255,255,255,.66);
   font-size: 17px;
   font-weight: 700;
@@ -799,7 +825,7 @@ button { color: inherit; }
 
 @media (max-width: 700px) {
   body { font-size: 17px; }
-  .site-header { top: 10px; width: calc(100% - 20px); min-height: 58px; padding: 6px; border-radius: 19px; }
+  .site-header { top: 10px; width: calc(100% - 20px); min-height: 58px; padding: 6px; border-radius: 12px; }
   .account-trigger { min-height: 44px; padding-right: 13px; }
   .account-icon { width: 32px; }
   .nav-links a { display: none; }
@@ -813,7 +839,7 @@ button { color: inherit; }
   .hero-actions { margin-top: 22px; gap: 16px; }
   .button { min-height: 48px; padding: 0 17px; font-size: 15px; }
   .text-link { font-size: 15px; }
-  .selector-console { padding: 22px; border-radius: 22px; }
+  .selector-console { padding: 22px; border-radius: 10px; }
   .console-main { padding: 22px 0; }
   .console-main h2 { font-size: 37px; }
   .console-copy { margin-top: 12px; font-size: 15px; }
@@ -824,7 +850,7 @@ button { color: inherit; }
   .studio-tabs { width: 100%; margin: 30px 0 24px; }
   .studio-tab { min-width: 0; flex: 1; min-height: 48px; padding: 0 8px; font-size: 15px; }
   .studio-viewport { min-height: 660px; }
-  .weather-section { min-height: 650px; padding: 28px 20px 48px; gap: 24px; border-radius: 24px; }
+  .weather-section { min-height: 650px; padding: 28px 20px 48px; gap: 24px; border-radius: 10px; }
   .weather-copy h2 { font-size: 40px; }
   .weather-copy > p:last-child { font-size: 16px; }
   .weather-tool { padding: 20px; }
@@ -836,7 +862,7 @@ button { color: inherit; }
   .project-grid { grid-template-columns: repeat(3, minmax(84vw, 1fr)); margin-right: -14px; }
   .brew-grid { overflow-x: auto; grid-template-columns: repeat(3, minmax(78vw, 1fr)); padding-bottom: 12px; scroll-snap-type: x mandatory; }
   .brew-card { min-height: 360px; scroll-snap-align: start; }
-  .contact-band { margin-top: 30px; padding: 28px 22px; display: block; border-radius: 22px; }
+  .contact-band { margin-top: 30px; padding: 28px 22px; display: block; border-radius: 8px; }
   .contact-band h2 { font-size: 29px; }
   .contact-actions { margin-top: 22px; }
   .contact-actions .button { width: 100%; }
